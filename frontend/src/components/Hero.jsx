@@ -175,7 +175,7 @@ export default function Hero() {
               style={{ transformStyle: "preserve-3d", transition: "transform 0.2s" }}
             >
               <img
-                src="https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src="https://tiimg.tistatic.com/fp/2/007/678/cctv-camera-for-survelliance-with-20-25-meter-range-and-ip55-rating-035.jpg"
                 alt="CCTV surveillance camera on modern building"
                 className="w-full h-full object-cover"
                 onError={(e) => {
@@ -210,7 +210,7 @@ export default function Hero() {
             </div>
 
             {/* Floating small chip */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
@@ -225,7 +225,7 @@ export default function Hero() {
                   Banjara Hills · Today
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
