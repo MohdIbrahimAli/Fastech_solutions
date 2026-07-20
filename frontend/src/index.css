@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..700&family=Space+Grotesk:wght@400..600&display=swap");
+
+:root {
+    --ft-orange: #F26B21;
+    --ft-orange-hover: #e05a10;
+    --ft-dark: #1F2937;
+    --ft-cream: #F7F5F1;
+
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+}
+
+* {
+    border-color: hsl(var(--border));
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #1F2937;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: auto;
+    /* Lenis handles it */
+}
+
+html.lenis {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+::selection {
+    background: #F26B21;
+    color: white;
+}
+
+@media (pointer: fine) {
+
+    body,
+    a,
+    button {
+        cursor: none;
+    }
+}
+
+/* --- Preloader --- */
+.preloader-glow {
+    background: radial-gradient(circle at 50% 55%,
+            rgba(242, 107, 33, 0.18) 0%,
+            rgba(242, 107, 33, 0.06) 30%,
+            rgba(255, 255, 255, 0) 65%);
+}
+
+.grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+}
+
+/* Logo drawing animation */
+.ft-animated-logo .ft-f-fill {
+    opacity: 0;
+    animation: fFadeIn 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.05s forwards;
+    transform-origin: 60px 150px;
+}
+
+@keyframes fFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        filter: blur(4px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.ft-animated-logo .ft-rev-astech {
+    animation: revealAstech 0.9s cubic-bezier(0.7, 0, 0.2, 1) 0.55s forwards;
+}
+
+.ft-animated-logo .ft-rev-sol {
+    animation: revealSol 0.6s cubic-bezier(0.7, 0, 0.2, 1) 1.15s forwards;
+}
+
+.ft-animated-logo .ft-glow {
+    opacity: 0;
+    animation: glowIn 0.9s ease-out 1.05s forwards;
+}
+
+@keyframes revealAstech {
+    to {
+        width: 360px;
+    }
+}
+
+@keyframes revealSol {
+    to {
+        width: 220px;
+    }
+}
+
+@keyframes glowIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Custom cursor --- */
+.ft-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: #F26B21;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+.ft-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid #F26B21;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition:
+        width 0.25s ease,
+        height 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.ft-cursor-ring-hover {
+    width: 56px;
+    height: 56px;
+    background: rgba(242, 107, 33, 0.12);
+    border-color: rgba(242, 107, 33, 0.5);
+    margin-left: -12px;
+    margin-top: -12px;
+}
+
+/* --- Hero heading --- */
+.ft-hero-heading {
+    font-size: clamp(2.6rem, 6.4vw, 6.4rem);
+    color: #0f0f10;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+}
+
+.ft-mask-line {
+    display: block;
+    line-height: 0.95;
+    padding-bottom: 0.05em;
+}
+
+/* Spotlight overlay */
+.spotlight-orange {
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgba(242, 107, 33, 0.25) 0%,
+            transparent 45%);
+    mix-blend-mode: overlay;
+}
+
+/* --- Editorial marquee --- */
+.ft-marquee {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    overflow: hidden;
+}
+
+.ft-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    animation: marqueeSlide 60s linear infinite;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+@keyframes marqueeSlide {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-33.33%);
+    }
+}
+
+.ft-tilt-wrap {
+    perspective: 1000px;
+}
+
+/* Nav link underline */
+.nav-link {
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 0;
+    background: #F26B21;
+    transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Swiper reset */
+.swiper {
+    overflow: visible !important;
+}
+
+.swiper-slide {
+    height: auto !important;
+}
+
+/* Motion-reduced */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F7F5F1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d1d1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F26B21;
+}
